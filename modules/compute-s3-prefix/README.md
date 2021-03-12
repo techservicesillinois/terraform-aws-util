@@ -29,4 +29,4 @@ Attributes Reference
 The following attributes are exported:
 
 * `hash` – leading four characters of the MD5 hash of the string specified for the `fqdn`.
-* `prefix" – S3 prefix consisting of hash prepended to the `fqdn` string.
+* `prefix` – S3 prefix consisting of hash prepended to the `fqdn` string.
