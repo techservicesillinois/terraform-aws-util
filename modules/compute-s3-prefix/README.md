@@ -9,7 +9,7 @@ Example Usage
 
 ```hcl
 module "s3-prefix" {
-  source = "git@github.com:techservicesillinois/terraform-aws-util//compute-s3-prefix"
+  source = "git@github.com:techservicesillinois/terraform-aws-util//modules/compute-s3-prefix"
 
   fqdn   = "foobar.test.techservices.illinois.edu"
 }
