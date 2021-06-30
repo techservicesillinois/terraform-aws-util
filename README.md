@@ -4,6 +4,6 @@
 
 Provides utility modules for managing AWS resources.
 
-The following modules are provided:
+At the moment, only one utility module is provided:
 
 * [compute-s3-prefix](modules/compute-s3-prefix/README.md)
