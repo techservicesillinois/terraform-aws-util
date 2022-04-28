@@ -7,3 +7,4 @@ Provides utility modules for managing AWS resources.
 At the moment, only one utility module is provided:
 
 * [compute-s3-prefix](modules/compute-s3-prefix/README.md)
+* [get-subnets](modules/get-subnets/README.md)
