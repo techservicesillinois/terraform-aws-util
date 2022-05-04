@@ -29,6 +29,10 @@ Argument Reference
 
 The following arguments are supported:
 
+* `include_subnet_detail` – (Optional) Return attributes should include map consisting of the [`aws_subnet`](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/subnet) object for the selected subnets. Defaults to `false`.
+
+* `include_subnets_by_az` – (Optional) Return attributes should include map, each key of which is an availability zone (AZ), with the value stored under each key being a list of corresponding subnets. Defaults to `false`.
+
 * `subnet_type` - (Optional) Type of subnet to look up (e.g., "campus", "private", "public"). This requires the networking to be built with a corresponding `SubnetType` tag (note capitalization).
 
 * `tier` - (Optional) Has same meaning as `subnet_type`, but using this name is Deprecated. This argument remains to support legacy service deployments until they have been migrated to use `subnet_type`. **NOTE: This argument is deprecated in favor of `subnet_type`.**
@@ -40,6 +44,11 @@ Attributes Reference
 
 The following attributes are exported:
 
+* `subnet_detail` – If `include_subnet_detail` is `true`, this attribute's value is the [`aws_subnet`](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/subnet) object for the selected subnets. The returned object's keys are the subnet IDs of the selected subnets. If `include_subnet_detail` is `false`, the returned attribute value is `null`.
+
 * `subnets` – object describing subnet(s) matching the specified `subnet_type` on the virtual private cloud (VPC) specified by the `vpc` argument. In the absence of a `subnet_type` argument, list of all subnets for the VPC specified by the `vpc` argument.
-**NOTE:** If neither `subnet_type` nor `tier` matches tags on any subnet, the module returns an empty list.
+**NOTE:** If neither `subnet_type` nor `tier` matches the tags on any subnet, an empty list is returned.
+
+* `subnets_by_az` – If `include_subnets_by_az` is `true`, this attribute's value is a map whose keys are the availability zones (AZs) of the selected subnets. The value stored under each key is a list of subnet IDs corresponding to that AZ. If `include_subnets_by_az` is ``false`, this attribute's value is `null`.
+
 * `vpc` – object for the virtual private cloud (VPC) specified by the `vpc` argument.
