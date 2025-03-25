@@ -1,9 +1,5 @@
-# TODO: Remove local variable and replace local.subnet_type with
-# var.subnet_type elsewhere once 'tier' is deprecated.
-
 locals {
   need_subnet_detail = (var.include_subnet_detail || var.include_subnets_by_az)
-  subnet_type        = can(coalesce(var.subnet_type, var.tier)) ? coalesce(var.subnet_type, var.tier) : null
 }
 
 data "aws_vpc" "selected" {
@@ -19,7 +15,7 @@ data "aws_subnets" "selected" {
   }
 
   # SubnetType filter only applies if caller specifies subnet_type argument.
-  tags = local.subnet_type != null ? { SubnetType = local.subnet_type } : {}
+  tags = var.subnet_type != null ? { SubnetType = var.subnet_type } : null
 }
 
 data "aws_subnet" "selected" {

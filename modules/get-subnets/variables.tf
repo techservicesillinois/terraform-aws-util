@@ -12,19 +12,19 @@ variable "include_subnets_by_az" {
 
 variable "subnet_type" {
   description = "Type of subnet to look up (e.g., 'campus', 'private', 'public')"
-  # TODO: Remove default once 'tier' is deprecated.
-  default = ""
+  default     = null
 }
 
-variable "tier" {
-  description = "Deprecated argument; meaning is identical to `subnet_type` and is superseded by any value there"
-  default     = ""
+# TODO: The 'tier' variable has been retired; remove in the future.
 
-  # TODO: Uncomment validation once 'tier' is deprecated, or remove variable.
-  # validation {
-  #   condition     = var.tier == ""
-  #   error_message = "ERROR: 'tier' argument is deprecated; use 'subnet_type' instead."
-  # }
+variable "tier" {
+  description = "Deprecated variable; use `subnet_type` instead"
+  default     = null
+
+  validation {
+    condition     = var.tier == null || var.tier == ""
+    error_message = "ERROR: 'tier' argument has been retired; use 'subnet_type' instead."
+  }
 }
 
 variable "vpc" {
