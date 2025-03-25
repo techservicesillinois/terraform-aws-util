@@ -16,17 +16,8 @@ output "vpc" {
 
 # Debug-only variables.
 
-# TODO: Remove this variable once 'tier' is deprecated.
-output "_coalesced_subnet_type" {
-  value = (var._debug) ? local.subnet_type : null
-}
-
 output "_subnet_type" {
   value = (var._debug) ? var.subnet_type : null
-}
-
-output "_tier" {
-  value = (var._debug) ? var.tier : null
 }
 
 output "_vpc" {
